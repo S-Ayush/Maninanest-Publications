@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MANINANEST PUBLICATIONS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="theme-color" content="#ca1010" />
+    <link
+      rel="shortcut icon"
+      href="images/mnpicon.png"
+      type="image/x-icon"
+      width="200%"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/fe5f5f8bbb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-4 col-3">
+          <div class="logo"><img src="images/mnplogo.png" alt="MNPlogo" /></div>
+        </div>
+        <div class="col-lg-8 col-9">
+          <h2 style="color: #ca1010">MANINANEST</h2>
+          <h2 class="pub">PUBLICATIONS</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid navigation sticky-top">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"
+            ><img src="images/menubar.png"
+          /></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="books.html"
+                >Books <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Packages
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="solopackages.html">Solo Books</a>
+                <a class="dropdown-item" href="anthologypackages.html"
+                  >Anthologies</a
+                >
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="blogs.html"
+                >Blogs <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html"
+                >About Us <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="contact.html"
+                >Contact Us <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a class="btn login-modal-open-button" id="login-modal-open-button"
+            >Login</a
+          >
+        </div>
+      </nav>
+    </div>
+    <div>
+      <div id="login-modal-background" class="hidden"></div>
+      <div id="login-modal" class="hidden">
+        <div id="close-login-modal">
+          <i class="far fa-times-circle"></i>
+        </div>
+        <form class="form-field">
+          <div>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div>
+            <input type="password" name="password" placeholder="password" />
+          </div>
+          <div style="margin-bottom: 0">
+            <a class="btn primary">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container-fluid contact">
+      <div class="writup">
+        <h2>Where the World get Published</h2>
+        <p>
+          we aims at providing the best opportunities to all the budding writers
+          who like to express and explore. We are a team of authors and mentors
+          who are experienced, hardworking and determined
+        </p>
+      </div>
+      <div class="form">
+        <form>
+          <div>
+            <input type="text" name="name" placeholder="Enter your Name" />
+          </div>
+          <div>
+            <input type="email" name="email" placeholder="Enter your Email" />
+          </div>
+          <div>
+            <textarea
+              name="msg"
+              id="msg"
+              cols="30"
+              rows="10"
+              placeholder="Message"
+            ></textarea>
+          </div>
+          <div>
+            <a class="btn primary">Send Message</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container-fluid footer">
+      <div class="row icons-tab">
+        <div class="col-lg-4 col-md-6 col-12">
+          <a><i class="fas fa-phone-alt"></i></a>
+          <p class="d-lg-block d-inline"><br />+919376440437</p>
+        </div>
+        <div class="col-lg-4 col-12">
+          <a><i class="fas fa-envelope"></i></a>
+          <p class="d-lg-block d-inline">
+            <br />maninanestpublications@yahoo.com
+          </p>
+        </div>
+        <div class="col-lg-4 col-12 add d-f">
+          <a><i class="fas fa-map-marker-alt"></i></a>
+          <p class="d-lg-block d-inline">
+            <br /><span
+              >Maninanest Publications,<br />Avas vikash colony,<br />Fatehpur,up<br />123456</span
+            >
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="row links">
+        <div class="col-lg-4 col-12">
+          <h2>Maninanest Publications</h2>
+        </div>
+        <div class="col-lg-4 col-12">
+          <h4>Quick Links</h4>
+          <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="anthologypackages.html">Packages</a>
+          <a href="books.html">Books</a>
+        </div>
+        <div class="col-lg-4 col-12">
+          <h4>Resources</h4>
+          <a href="blogs.html">Blogs</a>
+          <a>Editor's Page</a>
+          <a>Official News</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid end">
+      <p>© 2021,Maninanest Publication Pvt. Ltd.</p>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/3.0.0/jquery.waypoints.js"
+      integrity="sha512-kAKC+JNXXE28EycATN2UdxoTwR/5B4GpZnGPkzc7Z0QXGnH+BbFuhYDM7/va6ouR0NfGydfVN2alYnyfU/UCgw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"
+      integrity="sha512-+/4Q+xH9jXbMNJzNt2eMrYv/Zs2rzr4Bu2thfvzlshZBvH1g+VGP55W8b6xfku0c0KknE7qlbBPhDPrHFbgK4g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript" src="login/index.js"></script>
+  </body>
+</html>

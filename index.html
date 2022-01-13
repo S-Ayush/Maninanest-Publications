@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MANINANEST PUBLICATIONS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/fe5f5f8bbb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-4 col-3">
+          <div class="logo"><img src="images/mnplogo.png" alt="MNPlogo" /></div>
+        </div>
+        <div class="col-lg-8 col-9">
+          <h2 style="color: #ca1010">MANINANEST</h2>
+          <h2 class="pub">PUBLICATIONS</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid navigation sticky-top">
+      <nav class="navbar navbar-expand-lg">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"
+            ><img src="images/menubar.png"
+          /></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="books.html"
+                >Books <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Packages
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="solopackages.html">Solo Books</a>
+                <a class="dropdown-item" href="anthologypackages.html"
+                  >Anthologies</a
+                >
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="blogs.html"
+                >Blogs <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="about.html"
+                >About Us <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="contact.html"
+                >Contact Us <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <a class="btn login-modal-open-button" id="login-modal-open-button"
+            >Login</a
+          >
+        </div>
+      </nav>
+    </div>
+    <div>
+      <div id="login-modal-background" class="hidden"></div>
+      <div id="login-modal" class="hidden">
+        <div id="close-login-modal">
+          <i class="far fa-times-circle"></i>
+        </div>
+        <form class="form-field">
+          <div>
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div>
+            <input type="password" name="password" placeholder="password" />
+          </div>
+          <div style="margin-bottom: 0">
+            <a class="btn primary">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container-fluid carousal">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-ride="carousel"
+      >
+        <ol class="carousel-indicators">
+          <li
+            data-target="#carouselExampleIndicators"
+            data-slide-to="0"
+            class="active"
+          ></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              class="d-block"
+              src="images/inflaming youth.jpeg"
+              alt="First slide"
+              height="750px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Inflaming Youth</h5>
+              <p>Compiler:Maninanest Publication</p>
+              <a class="btn">Read More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block"
+              src="images/DAUR-E-ZINDAGI FINAL copy.jpeg"
+              alt="Second slide"
+              height="750px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Inflaming Youth</h5>
+              <p>Compiler:Maninanest Publication</p>
+              <a class="btn">Read More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block"
+              src="images/book3-min.jpg"
+              alt="Third slide"
+              height="750px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Inflaming Youth</h5>
+              <p>Compiler:Maninanest Publication</p>
+              <a class="btn">Read More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block"
+              src="images/wonder woman 11.jpeg"
+              alt="Third slide"
+              height="750px"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Inflaming Youth</h5>
+              <p>Compiler:Maninanest Publication</p>
+              <a class="btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleIndicators"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="container-fluid about">
+      <h2>About Us</h2>
+      <div class="inner">
+        <div class="row" style="overflow: hidden">
+          <div
+            class="col-lg-5 col-12 d-flex"
+            style="align-items: center; justify-content: center"
+          >
+            <img src="images/mnplogo.png" alt="MNP Logo" />
+          </div>
+          <div class="col-lg-7 col-12">
+            <p>
+              Maninanest Publications aims at providing the best opportunities
+              to all the budding writers who like to express and explore. We are
+              a team of authors and mentors who are experienced, hardworking and
+              determined. We aim at showing the right path to our writers in
+              this magnificent world of writing and promise to walk along with
+              them until they reach their destination. We offer a huge range of
+              services......
+            </p>
+            <a class="btn"
+              ><span class="col-9">Read More</span
+              ><span class="col-3 arrow">...</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid services">
+      <h2>Services We Provide</h2>
+      <div class="row content">
+        <div class="col-lg-6 col-12">
+          <div class="row mb-4">
+            <div class="col-lg-3 col-sm-2 col-3 serimg1">
+              <img src="images/book publishing layer@1X.png" />
+            </div>
+            <div class="col-9 sercontent">Book Publishing</div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-lg-3 col-sm-2 col-3 serimg1">
+              <img src="images/book compiling layer@1X.png" />
+            </div>
+            <div class="col-9 sercontent">Book Compiling</div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-lg-3 col-sm-2 col-3 serimg1">
+              <img src="images/distributiion@1X.png" />
+            </div>
+            <div class="col-9 sercontent">Book distributiion</div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="row mb-4">
+            <div class="col-lg-3 col-sm-2 col-3 serimg2">
+              <img
+                src="images/ideal cover design layer@1X.png"
+                style="margin-top: -16px"
+              />
+            </div>
+            <div class="col-9 sercontent">Ideal Cover Designing</div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-lg-3 col-sm-2 col-3 serimg2">
+              <img src="images/proof readin g@1X.png" />
+            </div>
+            <div class="col-9 sercontent">Proof Reading</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid team">
+      <h2>Our Professional Team</h2>
+      <div class="slider">
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img src="images/arpit.jpeg" />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Arpit Singh</h2>
+              <p class="card-text">Founder and CEO</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/swatantra.jpeg"
+                style="
+                  width: 274px;
+                  left: 63px;
+                  top: 139px;
+                  clip-path: circle(88px at 131px 94px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Swatantra Singh</h2>
+              <p class="card-text">Cost Cutting Manager</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/shraddha.jpeg"
+                style="
+                  width: 253px;
+                  left: 72px;
+                  top: 130px;
+                  clip-path: circle(88px at 140px 101px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Shraddha Singh</h2>
+              <p class="card-text">Editor In Chief</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/pragya.jpeg"
+                style="
+                  width: 253px;
+                  left: 72px;
+                  top: 130px;
+                  clip-path: circle(88px at 140px 101px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pragya Singh</h2>
+              <p class="card-text">Chief Manager</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/mitali.jpeg"
+                style="
+                  width: 409px;
+                  left: 11px;
+                  top: 84px;
+                  clip-path: circle(88px at 197px 140px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Mitali Palnitkar</h2>
+              <p class="card-text">Project Manager</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/kedar.jpeg"
+                style="
+                  width: 354px;
+                  left: 35px;
+                  top: 134px;
+                  clip-path: circle(88px at 169px 93px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title" style="font-size: 41px">
+                Kedar Dhopavkar
+              </h2>
+              <p class="card-text">Sr. Project Head</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+        <div class="item">
+          <div class="card">
+            <div class="card-head">
+              <img
+                src="images/divyak.jpeg"
+                style="
+                  width: 354px;
+                  left: 27px;
+                  top: 117px;
+                  clip-path: circle(88px at 180px 116px);
+                "
+              />
+            </div>
+            <div class="card-body">
+              <h2 class="card-title" style="font-size: 35px">
+                Divyak Pratap Singh
+              </h2>
+              <p class="card-text">Project Head</p>
+              <a href="javascript:void(0)" class="btn">Read More</a>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+          <div class="black"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="count conatiner-fluid">
+      <div class="row">
+        <div class="col-lg-3 col-12">
+          <span class="counter">14</span><span>+</span>
+          <p>Books Published</p>
+        </div>
+        <div class="col-lg-3 col-12">
+          <span class="counter">50</span><span>+</span>
+          <p>Ongoing Projects</p>
+        </div>
+        <div class="col-lg-3 col-12">
+          <span class="counter">1</span><span>+</span>
+          <p>Years Of Experince</p>
+        </div>
+        <div class="col-lg-3 col-12">
+          <span class="counter">800</span><span>+</span>
+          <p>Happy Writers</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid footer">
+      <div class="row icons-tab">
+        <div class="col-lg-4 col-md-6 col-12">
+          <a><i class="fas fa-phone-alt"></i></a>
+          <p class="d-lg-block d-inline"><br />+919376440437</p>
+        </div>
+        <div class="col-lg-4 col-12">
+          <a><i class="fas fa-envelope"></i></a>
+          <p class="d-lg-block d-inline">
+            <br />maninanestpublications@yahoo.com
+          </p>
+        </div>
+        <div class="col-lg-4 col-12 add d-f">
+          <a><i class="fas fa-map-marker-alt"></i></a>
+          <p class="d-lg-block d-inline">
+            <br /><span
+              >Maninanest Publications,<br />Avas vikash colony,<br />Fatehpur,up<br />123456</span
+            >
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div class="row links">
+        <div class="col-lg-4 col-12">
+          <h2>Maninanest Publications</h2>
+        </div>
+        <div class="col-lg-4 col-12">
+          <h4>Quick Links</h4>
+          <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="anthologypackages.html">Packages</a>
+          <a href="books.html">Books</a>
+        </div>
+        <div class="col-lg-4 col-12">
+          <h4>Resources</h4>
+          <a href="blogs.html">Blogs</a>
+          <a>Editor's Page</a>
+          <a>Official News</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid end">
+      <p>© 2021,Maninanest Publication Pvt. Ltd.</p>
+    </div>
+
+    <!-- <div class="slider">
+        
+      </div> -->
+
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/3.0.0/jquery.waypoints.js"
+      integrity="sha512-kAKC+JNXXE28EycATN2UdxoTwR/5B4GpZnGPkzc7Z0QXGnH+BbFuhYDM7/va6ouR0NfGydfVN2alYnyfU/UCgw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"
+      integrity="sha512-+/4Q+xH9jXbMNJzNt2eMrYv/Zs2rzr4Bu2thfvzlshZBvH1g+VGP55W8b6xfku0c0KknE7qlbBPhDPrHFbgK4g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      jQuery(document).ready(function () {
+        $(".slider").slick({
+          infinite: true,
+          dots: true,
+          centerMode: true,
+          centerPadding: 0,
+          variableWidth: false,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: false,
+          autoplaySpeed: 2000,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1600,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: false,
+              },
+            },
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                centerMode: false,
+              },
+            },
+            {
+              breakpoint: 650,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: false,
+              },
+            },
+          ],
+        });
+        $(".slick-dots li").innerHTML = "";
+      });
+    </script>
+    <script type="text/javascript" src="login/index.js"></script>
+  </body>
+</html>
