@@ -1,15 +1,14 @@
 jQuery(document).ready(function () {
-  const API_HOST = "http://localhost:3000";
+  const API_HOST = "http://localhost:3000"; //"https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
   $(".navbar-toggler").on("click", function () {
     $("#login-modal-open-button").toggleClass("hidden");
   });
   $("#login-modal-open-button").on("click", async function () {
+    $("#login-modal-background").addClass("show").removeClass("hidden");
+    $("#login-modal").addClass("show").removeClass("hidden");
     const res = await confirmAuth();
     if (res.status !== 401) {
       document.location = "/apps/dashboard.html";
-    } else {
-      $("#login-modal-background").addClass("show").removeClass("hidden");
-      $("#login-modal").addClass("show").removeClass("hidden");
     }
   });
   $("#close-login-modal").on("click", function () {
@@ -47,7 +46,7 @@ jQuery(document).ready(function () {
       } else {
         $("#login-modal-background").addClass("hidden").removeClass("show");
         $("#login-modal").addClass("hidden").removeClass("show");
-        // document.location = "/apps/dashboard.html";
+        document.location = "/apps/dashboard.html";
       }
     }
   });

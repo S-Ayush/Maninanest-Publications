@@ -481,6 +481,9 @@ a {
     left: 8%;
     top: 3%;
   }
+  #login-modal.show {
+    width: 45%;
+  }
   .services {
     padding: 55px 101px;
   }
@@ -525,6 +528,9 @@ a {
   }
 }
 @media screen and (max-width: 860px) {
+  #login-modal.show {
+    width: 52%;
+  }
   .slider .item {
     padding: 0px 10px;
   }
@@ -538,6 +544,9 @@ a {
   }
 }
 @media screen and (max-width: 768px) {
+  #login-modal.show {
+    width: 55%;
+  }
   .slider .item {
     padding: 0px 0px;
     margin-left: -18px;
@@ -561,6 +570,9 @@ a {
   }
 }
 @media screen and (max-width: 650px) {
+  #login-modal.show {
+    width: 70%;
+  }
   .slider .item {
     margin-left: -16px;
   }
@@ -611,6 +623,9 @@ a {
   }
 }
 @media screen and (max-width: 560px) {
+  #login-modal.show {
+    width: 90%;
+  }
   .header h2 {
     font-size: 7.5vw;
     font-weight: 700;
