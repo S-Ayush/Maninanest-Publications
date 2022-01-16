@@ -33,7 +33,7 @@
       <div id="open-side-bar" draggable="true">
         <img
           src="../images/dashboard-sidebar.png"
-          style="width: 35px; height: 45px"
+          style="width: 35px; height: 45px; filter: brightness(3.8)"
         />
       </div>
       <div class="container-fluid side-bar" id="side-bar">
@@ -43,32 +43,57 @@
       </div>
 
       <div class="dashboard-tabs hide" id="get-user-info">
-        <div class="close-dashboard-tab">
-          <i class="far fa-times-circle"></i>
-        </div>
-        <div class="upper">
-          <div class="for-img">
-            <i class="fas fa-user"></i>
-          </div>
-          <div class="for-name">
-            <h3 style="font-weight: 700">Arpit Singh</h3>
-            <h5 style="font-weight: 600">CEO & Founder</h5>
-          </div>
-        </div>
-        <div class="lower">
-          <div class="left">
-            <b>Name</b> : Arpit Singh <br />
-            <b>email</b> : arpitsingh@gmail.com<br />
-            <b>Mobile</b> : 9895693274<br />
-            <b>Total Projects</b> : 78<br />
-            <b>project Completed</b> : 48<br />
-            <b>pending Projects</b> : 30
-          </div>
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
 
       <div class="main-content">
-        <div style="height: 115vh"></div>
+        <div class="projects-main-container">
+          <div class="projects-actions">
+            <div class="search-project">
+              <input
+                name="project-search-bar"
+                type="search"
+                id="project-search-bar"
+                placeholder="Search Project..."
+              /><span id="open-more-search-actions" class="hide"
+                ><i class="fas fa-chevron-down"></i
+              ></span>
+            </div>
+            <div
+              class="project-filter"
+              id="completed-project"
+              value="completed"
+            >
+              Completed
+            </div>
+            <div class="project-filter" id="pending-project" value="pending">
+              Pending
+            </div>
+            <div class="add-new-project btn btn-primary">
+              <i class="fas fa-plus"></i> Add New
+            </div>
+          </div>
+          <div id="project-container">
+            <div
+              class="project"
+              style="
+                margin: 20px 15px 15px 5px;
+                height: 257px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h2 class="project-title">No Projects Found</h2>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script

@@ -12,6 +12,7 @@ body::-webkit-scrollbar {
   transform: translate(0, -50%);
   display: none;
   transition: all 0.4s;
+  z-index: 4000;
 }
 #open-side-bar.slide {
   left: 63px;
@@ -22,7 +23,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(315deg, #1a171747 0%, #dadada57 74%);
+  background-image: linear-gradient(315deg, #bababa 0%, #f3f3f3 74%);
 }
 .side-bar-icons {
   border-radius: 50%;
@@ -53,6 +54,7 @@ body::-webkit-scrollbar {
   transition: all 0.4s;
   max-height: 90vh;
   overflow: auto;
+  box-shadow: -3px 4px 10px 2px;
 }
 .close-dashboard-tab {
   position: absolute;
@@ -68,6 +70,7 @@ body::-webkit-scrollbar {
   max-height: 0;
   top: 9%;
   left: 4%;
+  box-shadow: none;
 }
 #get-user-info .upper {
   display: flex;
@@ -105,6 +108,63 @@ body::-webkit-scrollbar {
   width: 96%;
   overflow-y: auto;
 }
+.projects-actions {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 25px;
+}
+.projects-actions #project-search-bar {
+  border-radius: 8px;
+  border: 2px solid #0000003b;
+  height: 35px;
+  width: 253px;
+  color: #7c7c7c;
+  font-weight: 500;
+  padding: 2px 8px;
+}
+.projects-actions #project-search-bar:focus {
+  border: none;
+  box-shadow: 1px 0px 11px 2px #8888885d;
+  outline: none;
+}
+#open-more-search-actions {
+  display: none;
+}
+.project-filter {
+  padding: 6px 15px;
+  border-radius: 25px;
+  color: #001668bf;
+  background: white;
+  font-weight: 700;
+  box-shadow: 2px 1px 6px 0px #001668bf;
+}
+.project-filter.active {
+  background-color: #001668bf;
+  color: white;
+  font-weight: 600;
+  box-shadow: none;
+}
+#project-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  max-height: 350px;
+  width: 100%;
+}
+#project-container .project {
+  padding: 25px 15px;
+  min-width: 304px;
+  background-image: linear-gradient(315deg, #bababa 0%, #f3f3f3 74%);
+  margin: 25px;
+  text-align: center;
+  box-shadow: 1px 3px 7px 0px #45709e;
+}
+.project .project-analytics {
+  display: flex;
+}
+.project .compiler {
+  margin-top: 15px;
+}
 
 @media only screen and (max-width: 1200px) {
   .side-bar {
@@ -118,6 +178,35 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 860px) {
 }
 @media screen and (max-width: 768px) {
+  .projects-actions {
+    flex-direction: column;
+    display: flex;
+    max-height: 71px;
+    justify-content: flex-start;
+    transition: 0.4s all;
+    overflow: hidden;
+  }
+  .projects-actions.grow {
+    max-height: 222px;
+  }
+  .projects-actions div {
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+  .projects-actions #project-search-bar {
+    width: 198px;
+  }
+  #open-more-search-actions {
+    margin-left: 15px;
+    color: #fcfcfc;
+    background: linear-gradient(to left, #8d4428e0, #7d60c3e3);
+    padding: 5px 11px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    display: inline;
+  }
 }
 @media screen and (max-width: 650px) {
   #open-side-bar {
@@ -129,6 +218,7 @@ body::-webkit-scrollbar {
     height: 100%;
     transform: translate(-100%, 0);
     transition: 0.4s all;
+    z-index: 4000;
   }
   .side-bar.show {
     transform: translate(0);
@@ -148,10 +238,56 @@ body::-webkit-scrollbar {
   .main-content {
     width: 100%;
   }
+  #project-container {
+    padding: 20px 0;
+  }
+  #project-container .project {
+    margin: 20px 15px 15px 5px;
+  }
 }
 @media screen and (max-width: 560px) {
 }
 @media screen and (max-width: 460px) {
 }
 @media screen and (max-width: 375px) {
+}
+
+/* loder css */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  display: block;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #4a9ec0 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
