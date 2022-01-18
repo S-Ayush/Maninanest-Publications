@@ -43,11 +43,227 @@
       </div>
 
       <div class="dashboard-tabs hide" id="get-user-info">
+        <div class="close-dashboard-tab">
+          <i class="far fa-times-circle"></i>
+        </div>
         <div class="lds-ring">
           <div></div>
           <div></div>
           <div></div>
           <div></div>
+        </div>
+        <button id="logout" class="btn btn-danger mt-2">LogOut</button>
+      </div>
+      <div class="dashboard-tabs hide" id="add-new-project-tab">
+        <div class="close-dashboard-tab">
+          <i class="far fa-times-circle"></i>
+        </div>
+        <div style="width: 100%; height: 100%; overflow: auto">
+          <div class="add-new-project-input-collection">
+            <div class="project-form">
+              <form>
+                <div class="projectdivision">
+                  <h4>Project Details</h4>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="projectname">Project Name </label>
+                    </div>
+                    <div class="col-md-9">
+                      <input
+                        id="projectname"
+                        name="projectname"
+                        class="projectinput"
+                        placeholder="Project Name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="projecttheme">Project Theme </label>
+                    </div>
+                    <div class="col-md-9">
+                      <input
+                        id="projecttheme"
+                        name="projecttheme"
+                        class="projectinput"
+                        placeholder="Project Theme"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="projectgenre">Project Genre</label>
+                    </div>
+                    <div class="col-md-9">
+                      <input
+                        id="projectgenre"
+                        name="projectgenre"
+                        class="projectinput"
+                        placeholder="Project Genre"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="projectlanguage">Project language</label>
+                    </div>
+                    <div class="col-md-9">
+                      <input
+                        id="projectlanguage"
+                        name="projectlanguage"
+                        class="projectinput"
+                        placeholder="Project language"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="projecttype">Project Type</label>
+                    </div>
+                    <div class="col-md-9">
+                      <select
+                        id="projecttype"
+                        name="projecttype"
+                        class="projectinput"
+                        placeholder="Project Type"
+                        required
+                      >
+                        <option>Anthology</option>
+                        <option>Solo Book</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="package">Package</label>
+                    </div>
+                    <div class="col-md-9">
+                      <select
+                        id="package"
+                        name="package"
+                        class="projectinput"
+                        placeholder="Package"
+                        required
+                      >
+                        <option
+                          disabled
+                          style="
+                            background-color: rgb(184, 184, 184);
+                            color: rgb(0, 0, 0);
+                          "
+                        >
+                          Hard Copy Packages
+                        </option>
+                        <option>1000 Elite</option>
+                        <option>700 Platinum</option>
+                        <option>500 Diamond</option>
+                        <option>375 Gold</option>
+                        <option
+                          disabled
+                          style="
+                            background-color: rgb(184, 184, 184);
+                            color: rgb(0, 0, 0);
+                          "
+                        >
+                          E-Book Packages
+                        </option>
+                        <option>250 Sapphire</option>
+                        <option>200 Coral</option>
+                        <option>150 Pearl</option>
+                        <option>90 Classic</option>
+                        <option>50 Classic Bio</option>
+                        <option>30 Pocket</option>
+                        <option
+                          disabled
+                          style="
+                            background-color: rgb(184, 184, 184);
+                            color: rgb(0, 0, 0);
+                          "
+                        >
+                          Special Packages
+                        </option>
+                        <option>200 E-book</option>
+                        <option>400 Hard Copy</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <h4>Compiler Details</h4>
+                <div class="compiler-division" style="padding: 15px">
+                  <div
+                    class="compiler1"
+                    style="
+                      zoom: 0.8;
+                      box-shadow: 2px 2px 8px 2px grey;
+                      padding: 10px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <h5>compiler 1</h5>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="Compilername1">Compiler Name</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="Compilername1"
+                          name="Compilername1"
+                          class="projectinput"
+                          placeholder="Compiler Name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="compileremail1">Compiler Email</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="compileremail1"
+                          name="compileremail1"
+                          class="projectinput"
+                          placeholder="Compiler Email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="compilermobile1">Compiler Mobile</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="compilermobile1"
+                          name="compilermobile1"
+                          class="projectinput"
+                          placeholder="Compiler Mobile"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="btn btn-primary ml-3 mb-4 add-new-compiler-button"
+                  style="zoom: 0.8; margin-top: -5px"
+                >
+                  Add New Compiler
+                </div>
+                <div
+                  class="btn btn-success"
+                  id="add-new-project-btn"
+                  style="width: 100%"
+                >
+                  Add Project
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -74,7 +290,7 @@
             <div class="project-filter" id="pending-project" value="pending">
               Pending
             </div>
-            <div class="add-new-project btn btn-primary">
+            <div class="add-new-project btn btn-primary" id="add-new-project">
               <i class="fas fa-plus"></i> Add New
             </div>
           </div>
@@ -106,6 +322,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script type="text/javascript" src="./js/dashboard.js"></script>
+    <script type="text/javascript" src="./js/dashboard.js?v=1"></script>
   </body>
 </html>

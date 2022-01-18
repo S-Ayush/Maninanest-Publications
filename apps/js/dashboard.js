@@ -21,7 +21,11 @@ jQuery(document).ready(function () {
       sideBarOpen = !sideBarOpen;
     }
   });
-
+  $(".dashboard-tabs").on("click", ".logout", function () {
+    console.log("logout");
+    document.location = "/contact.html";
+    logoutUser();
+  });
   ///// dashboard tabs event
   $("#user-info").on("click", function () {
     document.location = "#get-user-info";
@@ -46,7 +50,9 @@ jQuery(document).ready(function () {
     projects.map((project) => {
       var isCompiler = false;
       project.compiler.map((compiler) => {
-        isCompiler = compiler.name.toLowerCase().includes(searchValue);
+        isCompiler = !isCompiler
+          ? compiler.name.toLowerCase().includes(searchValue)
+          : true;
       });
       if (
         project.project_name.toLowerCase().includes(searchValue) ||
@@ -71,6 +77,25 @@ jQuery(document).ready(function () {
         ));
     getFilteredprojects();
   });
+  $(".projects-actions").on("click", ".add-new-project", function () {
+    document.location = "#add-new-project-tab";
+    getTabs();
+  });
+  $(".add-new-project-input-collection").on(
+    "click",
+    ".add-new-compiler-button",
+    function () {
+      fetchNewCompilerSection();
+    }
+  );
+  $(".add-new-project-input-collection").on(
+    "click",
+    "#add-new-project-btn",
+    function () {
+      addNewProject();
+    }
+  );
+
   // helpers functions
 
   const getTabs = (tab) => {
@@ -108,6 +133,142 @@ jQuery(document).ready(function () {
       : (filteredProjects = projects);
     fetchProjects(filteredProjects);
   };
+
+  const addNewProject = async () => {
+    if (validateAddNewProject()) {
+      var newProject = {
+        project_name: "",
+        project_theme: "",
+        project_genre: "",
+        project_language: "",
+        project_type: "",
+        package: "",
+        compiler: [],
+        total_slots: 0,
+        filled_slots: 0,
+        paid: 0,
+        submitted: 0,
+      };
+      newProject.project_name = $(
+        ".add-new-project-input-collection #projectname"
+      )
+        .val()
+        .toLowerCase();
+      newProject.project_theme = $(
+        ".add-new-project-input-collection #projecttheme"
+      )
+        .val()
+        .toLowerCase();
+      newProject.project_genre = $(
+        ".add-new-project-input-collection #projectgenre"
+      )
+        .val()
+        .toLowerCase();
+      newProject.project_language = $(
+        ".add-new-project-input-collection #projectlanguage"
+      )
+        .val()
+        .toLowerCase();
+      newProject.project_type = $(
+        ".add-new-project-input-collection #projecttype"
+      )
+        .val()
+        .toLowerCase();
+      newProject.package = $(".add-new-project-input-collection #package")
+        .val()
+        .toLowerCase();
+
+      var compilerCount = $(
+        ".add-new-project-input-collection .compiler-division"
+      ).children().length;
+      for (i = 1; i <= compilerCount; i++) {
+        var name = $(`.compiler${i} #Compilername${i}`).val().toLowerCase();
+        var email = $(`.compiler${i} #compileremail${i}`).val();
+        var mobile = $(`.compiler${i} #compilermobile${i}`).val();
+        newProject.compiler.push({ name, email, mobile });
+      }
+      console.log(newProject);
+      var addedProject = await addNewProjectToDatabase(newProject);
+      projects.push(addedProject);
+      fetchProjects(projects);
+      const tab = $("#add-new-project-tab");
+      document.location.hash = "";
+      getTabs(tab);
+    }
+  };
+
+  const validateAddNewProject = () => {
+    if ($(".add-new-project-input-collection #projectname").val() === "") {
+      var element = $(".add-new-project-input-collection #projectname");
+      element.focus();
+      element.addClass("required");
+      setTimeout(function () {
+        element.removeClass("required");
+      }, 2000);
+      return false;
+    } else if (
+      $(".add-new-project-input-collection #projecttheme").val() === ""
+    ) {
+      var element = $(".add-new-project-input-collection #projecttheme");
+      element.focus();
+      element.addClass("required");
+      setTimeout(function () {
+        element.removeClass("required");
+      }, 2000);
+      return false;
+    } else if (
+      $(".add-new-project-input-collection #projectgenre").val() === ""
+    ) {
+      var element = $(".add-new-project-input-collection #projectgenre");
+      element.focus();
+      element.addClass("required");
+      setTimeout(function () {
+        element.removeClass("required");
+      }, 2000);
+      return false;
+    } else if (
+      $(".add-new-project-input-collection #projectlanguage").val() === ""
+    ) {
+      var element = $(".add-new-project-input-collection #projectlanguage");
+      element.focus();
+      element.addClass("required");
+      setTimeout(function () {
+        element.removeClass("required");
+      }, 3000);
+      return false;
+    }
+    var compilerCount = $(
+      ".add-new-project-input-collection .compiler-division"
+    ).children().length;
+    for (i = 1; i <= compilerCount; i++) {
+      if ($(`.compiler${i} #Compilername${i}`).val() === "") {
+        var element = $(`.compiler${i} #Compilername${i}`);
+        element.focus();
+        element.addClass("required");
+        setTimeout(function () {
+          element.removeClass("required");
+        }, 3000);
+        return false;
+      } else if ($(`.compiler${i} #compileremail${i}`).val() === "") {
+        var element = $(`.compiler${i} #compileremail${i}`);
+        element.focus();
+        element.addClass("required");
+        setTimeout(function () {
+          element.removeClass("required");
+        }, 3000);
+        return false;
+      } else if ($(`.compiler${i} #compilermobile${i}`).val() === "") {
+        var element = $(`.compiler${i} #compilermobile${i}`);
+        element.focus();
+        element.addClass("required");
+        setTimeout(function () {
+          element.removeClass("required");
+        }, 3000);
+        return false;
+      }
+    }
+    return true;
+  };
   //fetch dom elements
 
   const fetchUserInfo = async (tab) => {
@@ -132,7 +293,8 @@ jQuery(document).ready(function () {
             <b>project Completed</b> : 48<br />
             <b>pending Projects</b> : 30
           </div>
-        </div>`;
+        </div>
+        <button id="logout" class="btn btn-danger mt-2 logout">LogOut</button>`;
     $(tab).html(html);
   };
 
@@ -140,7 +302,7 @@ jQuery(document).ready(function () {
     var html = "";
     filteredProjects.length
       ? filteredProjects.map((project) => {
-          html += `<div class="project" id="${project.id}">
+          html += `<div class="project" id="${project._id}">
               <h2 class="project-title">${project.project_name.toUpperCase()}</h2>
               <p style="color: grey; margin-top: -5px">${project.project_theme.toUpperCase()}</p>
               <div class="project-analytics">
@@ -187,9 +349,68 @@ jQuery(document).ready(function () {
             </div>`);
     $("#project-container").html(html);
   };
+
+  var compilerCount = 1;
+  const fetchNewCompilerSection = () => {
+    compilerCount++;
+    html = `<div
+                    class="compiler${compilerCount}"
+                    style="
+                      zoom: 0.8;
+                      box-shadow: 2px 2px 8px 2px grey;
+                      padding: 10px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <h5>compiler ${compilerCount}</h5>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="Compilername${compilerCount}">Compiler Name</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="Compilername${compilerCount}"
+                          name="Compilername${compilerCount}"
+                          class="projectinput"
+                          placeholder="Compiler Name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="compileremail${compilerCount}">Compiler Email</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="compileremail${compilerCount}"
+                          name="compileremail${compilerCount}"
+                          class="projectinput"
+                          placeholder="Compiler Email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-field row">
+                      <div class="project-label col-md-3">
+                        <label for="compilermobile${compilerCount}">Compiler Mobile</label>
+                      </div>
+                      <div class="col-md-9">
+                        <input
+                          id="compilermobile${compilerCount}"
+                          name="compilermobile${compilerCount}"
+                          class="projectinput"
+                          placeholder="Compiler Mobile"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>`;
+    $(".compiler-division").append(html);
+  };
   //api calls
 
-  const API_HOST = "https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
+  const API_HOST = "http://localhost:3000"; //"https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
   const getUserData = async (data) => {
     const res = await fetch(`${API_HOST}/userData`, {
       method: "GET",
@@ -217,11 +438,40 @@ jQuery(document).ready(function () {
       document.location = "/";
     }
   };
+
+  const logoutUser = async () => {
+    const res = await fetch(`${API_HOST}/logout`, {
+      method: "GET",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      cookies: document.cookie,
+    });
+    console.log(res.data);
+  };
+
+  const addNewProjectToDatabase = async (project) => {
+    const res = await fetch(`${API_HOST}/project`, {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(project),
+      cookies: document.cookie,
+    });
+    return res.json();
+  };
+
   setTimeout(async function () {
     let data = await getUserData();
     userData = await data.user;
     projects = await data.projects;
     console.log(projects);
+    fetchUserInfo("#get-user-info");
     fetchProjects(projects);
   }, 1);
 });
