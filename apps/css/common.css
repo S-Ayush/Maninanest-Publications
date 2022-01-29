@@ -53,6 +53,34 @@ a {
     margin-left: 26px;
   }
 }
+/*  */
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #d7e2ec;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background-color: #dbdbdb52; */
+  background-image: linear-gradient(#c4f3a43f 3%, #a0ee9641 94%, #83b8f51f 3%);
+  /* box-shadow: inset 0 0 5px rgba(192, 192, 192, 0.308); */
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e0e0e0;
+}
 
 /* progress bar */
 

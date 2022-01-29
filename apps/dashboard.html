@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    <!-- header -->
     <div class="container-fluid header">
       <div class="row">
         <div class="col-lg-4 col-3">
@@ -29,7 +30,9 @@
         </div>
       </div>
     </div>
+
     <div class="d-flex container-fluid dashboard">
+      <!-- Dashboard sidebar -->
       <div id="open-side-bar" draggable="true">
         <img
           src="../images/dashboard-sidebar.png"
@@ -42,6 +45,8 @@
         </div>
       </div>
 
+      <!-- dashboard tabs -->
+      <!-- user info tab -->
       <div class="dashboard-tabs hide" id="get-user-info">
         <div class="close-dashboard-tab">
           <i class="far fa-times-circle"></i>
@@ -54,6 +59,8 @@
         </div>
         <button id="logout" class="btn btn-danger mt-2">LogOut</button>
       </div>
+
+      <!-- add new project tab-->
       <div class="dashboard-tabs hide" id="add-new-project-tab">
         <div class="close-dashboard-tab">
           <i class="far fa-times-circle"></i>
@@ -267,8 +274,10 @@
         </div>
       </div>
 
+      <!-- main content start -->
       <div class="main-content">
         <div class="projects-main-container">
+          <!-- project actions -->
           <div class="projects-actions">
             <div class="search-project">
               <input
@@ -294,6 +303,8 @@
               <i class="fas fa-plus"></i> Add New
             </div>
           </div>
+
+          <!-- all projects display section -->
           <div id="project-container">
             <div
               class="project"
@@ -307,6 +318,71 @@
             >
               <h2 class="project-title">No Projects Found</h2>
               <div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- analysis container -->
+        <div class="analysis-container">
+          <!-- analysis-navbar -->
+          <div class="analysis-navbar">
+            <div class="analysis-navItem active" id="general-overview">
+              General
+            </div>
+            <div
+              class="analysis-navItem display-none"
+              id="specific-project-details"
+            >
+              Project Detail
+            </div>
+            <div
+              class="analysis-navItem display-none"
+              id="specific-project-overview"
+            >
+              Project Overview
+            </div>
+          </div>
+          <!-- analysis-tabs -->
+          <div class="analysis-tabs">
+            <div class="analysis-content active" id="general-overview-tab">
+              <h1>General Tab</h1>
+            </div>
+            <div class="analysis-content" id="specific-project-details-tab">
+              <h3 class="specific-project-name"></h3>
+              <table class="table table-striped">
+                <tr>
+                  <td>Theme</td>
+                  <td class="specific-project-theme"></td>
+                </tr>
+                <tr>
+                  <td>Genre</td>
+                  <td class="specific-project-genre"></td>
+                </tr>
+                <tr>
+                  <td>Language</td>
+                  <td class="specific-project-language"></td>
+                </tr>
+                <tr>
+                  <td>Type</td>
+                  <td class="specific-project-type"></td>
+                </tr>
+                <tr>
+                  <td>Package</td>
+                  <td class="specific-project-package"></td>
+                </tr>
+                <tr>
+                  <td>Total Slots</td>
+                  <td class="specific-project-total-slots"></td>
+                </tr>
+                <tr>
+                  <td>Filled Slots</td>
+                  <td class="specific-project-filled-slots"></td>
+                </tr>
+              </table>
+              <div class="specific-project-compiler-container"></div>
+            </div>
+            <div class="analysis-content" id="specific-project-overview-tab">
+              <h1>Project Overview Tab</h1>
             </div>
           </div>
         </div>

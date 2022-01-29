@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
   var userData = {};
   var projects = [];
   var projectFilters = [];
+
   setTimeout(function () {
     $(".header").addClass("hide");
   }, 1100);
@@ -85,7 +86,7 @@ jQuery(document).ready(function () {
     "click",
     ".add-new-compiler-button",
     function () {
-      fetchNewCompilerSection();
+      $(".compiler-division").append(fetchNewCompilerSection());
     }
   );
   $(".add-new-project-input-collection").on(
@@ -95,7 +96,68 @@ jQuery(document).ready(function () {
       addNewProject();
     }
   );
+  $("#project-container").on("click", ".project", async function () {
+    const projectId = $(this).attr("id");
+    const projectDetails = await getProjectDetails(projectId);
+    console.log(projectDetails);
+    $(".analysis-tabs .specific-project-name").html(
+      projectDetails.project_name
+    );
+    $(".analysis-tabs .specific-project-theme").html(
+      projectDetails.project_theme
+    );
+    $(".analysis-tabs .specific-project-genre").html(
+      projectDetails.project_genre
+    );
+    $(".analysis-tabs .specific-project-language").html(
+      projectDetails.project_language
+    );
+    $(".analysis-tabs .specific-project-type").html(
+      projectDetails.project_type
+    );
+    $(".analysis-tabs .specific-project-package").html(projectDetails.package);
+    $(".analysis-tabs .specific-project-total-slots").html(
+      projectDetails.total_slots
+    );
+    $(".analysis-tabs .specific-project-filled-slots").html(
+      projectDetails.filled_slots
+    );
+    var html = "";
+    projectDetails.compiler.map((compiler, index) => {
+      html += `
+        <h5>Compiler ${index + 1}</h5>
+          <table class="table table-striped">
+            <tr>
+              <td>Name</td>
+              <td>${compiler.name}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>${compiler.email}</td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td>${compiler.mobile}</td>
+            </tr>
+          </table>
+      `;
+    });
+    $(".analysis-tabs .specific-project-compiler-container").html(html);
+    $(".analysis-navItem.active").removeClass("active");
+    $("#specific-project-details")
+      .removeClass("display-none")
+      .addClass("display-block active");
+    $(".analysis-content.active").removeClass("active");
+    $(`#specific-project-details-tab`).addClass("active");
+  });
 
+  $(".analysis-navbar").on("click", ".analysis-navItem", function () {
+    $(".analysis-navItem.active").removeClass("active");
+    $(this).addClass("active");
+    const id = $(this).attr("id");
+    $(".analysis-content.active").removeClass("active");
+    $(`#${id}-tab`).addClass("active");
+  });
   // helpers functions
 
   const getTabs = (tab) => {
@@ -136,6 +198,7 @@ jQuery(document).ready(function () {
 
   const addNewProject = async () => {
     if (validateAddNewProject()) {
+      //if (true) {
       var newProject = {
         project_name: "",
         project_theme: "",
@@ -187,6 +250,7 @@ jQuery(document).ready(function () {
         var mobile = $(`.compiler${i} #compilermobile${i}`).val();
         newProject.compiler.push({ name, email, mobile });
       }
+      newProject.total_slots = parseInt(newProject.package.slice(0, 3));
       console.log(newProject);
       var addedProject = await addNewProjectToDatabase(newProject);
       projects.push(addedProject);
@@ -194,6 +258,7 @@ jQuery(document).ready(function () {
       const tab = $("#add-new-project-tab");
       document.location.hash = "";
       getTabs(tab);
+      refreshAddNewProjectTab(tab);
     }
   };
 
@@ -269,6 +334,7 @@ jQuery(document).ready(function () {
     }
     return true;
   };
+
   //fetch dom elements
 
   const fetchUserInfo = async (tab) => {
@@ -406,7 +472,16 @@ jQuery(document).ready(function () {
                       </div>
                     </div>
                   </div>`;
-    $(".compiler-division").append(html);
+    return html;
+  };
+
+  const refreshAddNewProjectTab = (tab) => {
+    $(".add-new-project-input-collection #projectname").value = "";
+    $(".add-new-project-input-collection #projecttheme").value = "";
+    $(".add-new-project-input-collection #projectgenre").value = "";
+    $(".add-new-project-input-collection #projectlanguage").value = "";
+    compilerCount = 0;
+    $(".compiler-division").html(fetchNewCompilerSection());
   };
   //api calls
 
@@ -466,6 +541,24 @@ jQuery(document).ready(function () {
     return res.json();
   };
 
+  const getProjectDetails = async (projectId) => {
+    const res = await fetch(`${API_HOST}/project/${projectId}`, {
+      method: "GET",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      cookies: document.cookie,
+    });
+
+    if (res.status === 200) {
+      return res.json();
+    }
+    if (res.status === 401) {
+      document.location = "/";
+    }
+  };
   setTimeout(async function () {
     let data = await getUserData();
     userData = await data.user;
