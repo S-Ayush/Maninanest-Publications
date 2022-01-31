@@ -96,12 +96,12 @@ jQuery(document).ready(function () {
       addNewProject();
     }
   );
-  $("#project-container").on("click", ".project", async function () {
+  $("#project-container").on("click", ".view-project", async function () {
     const projectId = $(this).attr("id");
-    const projectDetails = await getProjectDetails(projectId);
+    const projectDetails = projects.find((project) => project._id == projectId);
     console.log(projectDetails);
     $(".analysis-tabs .specific-project-name").html(
-      projectDetails.project_name
+      projectDetails.project_name.toUpperCase()
     );
     $(".analysis-tabs .specific-project-theme").html(
       projectDetails.project_theme
@@ -149,6 +149,76 @@ jQuery(document).ready(function () {
       .addClass("display-block active");
     $(".analysis-content.active").removeClass("active");
     $(`#specific-project-details-tab`).addClass("active");
+  });
+  $("#project-container").on("click", ".edit-project", function () {
+    const projectId = $(this).attr("id");
+    const projectDetails = projects.find((project) => project._id == projectId);
+    console.log(projectDetails);
+    $(".analysis-tabs .specific-project-name").html(
+      `<input type="text" value = "${projectDetails.project_name.toUpperCase()}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-theme").html(
+      `<input type="text" value = "${projectDetails.project_theme}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-genre").html(
+      `<input type="text" value = "${projectDetails.project_genre}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-language").html(
+      `<input type="text" value = "${projectDetails.project_language}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-type").html(
+      `<input type="text" value = "${projectDetails.project_type}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-package").html(
+      `<input type="text" value = "${projectDetails.package}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-total-slots").html(
+      `<input type="text" value = "${projectDetails.total_slots}" class=specific-project-name-input>`
+    );
+    $(".analysis-tabs .specific-project-filled-slots").html(
+      `<input type="text" value = "${projectDetails.filled_slots}" class=specific-project-name-input>`
+    );
+    var html = "";
+    projectDetails.compiler.map((compiler, index) => {
+      html += `
+        <h5>Compiler ${index + 1}</h5>
+          <table class="table table-striped">
+            <tr>
+              <td>Name</td>
+              <td><input type="text" value = "${
+                compiler.name
+              }" class=specific-project-name-input></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><input type="text" value = "${
+                compiler.email
+              }" class=specific-project-name-input></td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td><input type="text" value = "${
+                compiler.mobile
+              }" class=specific-project-name-input></td>
+            </tr>
+          </table>
+      `;
+    });
+    $(".analysis-tabs .specific-project-compiler-container").html(html);
+    $(".analysis-navItem.active").removeClass("active");
+    $("#specific-project-details")
+      .removeClass("display-none")
+      .addClass("display-block active");
+    $(".analysis-content.active").removeClass("active");
+    $(`#specific-project-details-tab`).addClass("active");
+  });
+  $("#project-container").on("click", ".delete-project", function () {
+    const id = $(this).attr("id");
+    deleteProject(id).then((data) => {
+      console.log(data);
+      projects = projects.filter((project) => project._id !== id);
+      fetchProjects(projects);
+    });
   });
 
   $(".analysis-navbar").on("click", ".analysis-navItem", function () {
@@ -369,6 +439,23 @@ jQuery(document).ready(function () {
     filteredProjects.length
       ? filteredProjects.map((project) => {
           html += `<div class="project" id="${project._id}">
+              <div class="project-sidebar">
+                <div class="view-project" style="color: #585858" id="${
+                  project._id
+                }">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <div class="edit-project" style="color: #0077f7" id="${
+                  project._id
+                }">
+                  <i class="fas fa-edit"></i>
+                </div>
+                <div class="delete-project" style="color: #dc1c1c" id="${
+                  project._id
+                }">
+                  <i class="fas fa-trash-alt"></i>
+                </div>
+              </div>
               <h2 class="project-title">${project.project_name.toUpperCase()}</h2>
               <p style="color: grey; margin-top: -5px">${project.project_theme.toUpperCase()}</p>
               <div class="project-analytics">
@@ -496,16 +583,6 @@ jQuery(document).ready(function () {
       credentials: "include",
       cookies: document.cookie,
     });
-    fetch(`${API_HOST}/`, {
-      method: "post",
-      headers: {
-        Accept: "*/*",
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify({ get: "apple" }),
-      credentials: "include",
-      cookies: document.cookie,
-    });
     if (res.status === 200) {
       return res.json();
     }
@@ -538,12 +615,35 @@ jQuery(document).ready(function () {
       body: JSON.stringify(project),
       cookies: document.cookie,
     });
-    return res.json();
+    if (res.status == 200) {
+      return res.json();
+    }
+    if (res.status == 401) {
+      document.location = "/";
+    }
   };
 
   const getProjectDetails = async (projectId) => {
     const res = await fetch(`${API_HOST}/project/${projectId}`, {
       method: "GET",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      cookies: document.cookie,
+    });
+
+    if (res.status === 200) {
+      return res.json();
+    }
+    if (res.status === 401) {
+      document.location = "/";
+    }
+  };
+  const deleteProject = async (projectId) => {
+    const res = await fetch(`${API_HOST}/project/${projectId}`, {
+      method: "DELETE",
       headers: {
         Accept: "*/*",
         "content-Type": "application/json",
