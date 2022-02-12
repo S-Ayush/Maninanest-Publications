@@ -281,8 +281,9 @@ input.required {
 }
 #specific-project-details-tab .specific-project-compiler-container {
   text-align: left;
-  float: right;
-  width: 45%;
+  float: left;
+  width: 50%;
+  padding-left: 49px;
   zoom: 0.9;
 }
 #specific-project-details-tab .specific-project-compiler-container table {
@@ -291,10 +292,21 @@ input.required {
   float: none;
   margin: 15px 0;
 }
+#specific-project-details-tab .update-project {
+  margin: 18px auto;
+  width: 19%;
+}
+#specific-project-details-tab input {
+  width: 100%;
+}
 
 @media only screen and (max-width: 1200px) {
   .side-bar {
     width: 8%;
+  }
+  #specific-project-details-tab .update-project {
+    margin: 14px auto;
+    width: 33%;
   }
 }
 @media screen and (max-width: 1024px) {
@@ -305,7 +317,8 @@ input.required {
   #specific-project-details-tab .specific-project-compiler-container {
     float: none;
     width: 100%;
-    margin: 15px;
+    margin: 15px 0;
+    padding: 0;
   }
 }
 @media screen and (max-width: 992px) {
@@ -341,6 +354,9 @@ input.required {
     font-size: 17px;
     font-weight: 700;
     display: inline;
+  }
+  #specific-project-details-tab .update-project {
+    width: 52%;
   }
 }
 @media screen and (max-width: 650px) {
@@ -392,11 +408,13 @@ input.required {
     zoom: 0.82;
   }
   #specific-project-details-tab .specific-project-compiler-container {
-    margin: 15px 5px;
     zoom: 0.85;
   }
   #specific-project-details-tab .specific-project-compiler-container table {
     margin: 10px 3px;
+  }
+  #specific-project-details-tab .update-project {
+    width: 90%;
   }
 }
 @media screen and (max-width: 560px) {

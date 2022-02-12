@@ -2,6 +2,7 @@ jQuery(document).ready(function () {
   var userData = {};
   var projects = [];
   var projectFilters = [];
+  var updateProjectObj = {};
 
   setTimeout(function () {
     $(".header").addClass("hide");
@@ -98,85 +99,41 @@ jQuery(document).ready(function () {
   );
   $("#project-container").on("click", ".view-project", async function () {
     const projectId = $(this).attr("id");
-    const projectDetails = projects.find((project) => project._id == projectId);
-    console.log(projectDetails);
-    $(".analysis-tabs .specific-project-name").html(
-      projectDetails.project_name.toUpperCase()
-    );
-    $(".analysis-tabs .specific-project-theme").html(
-      projectDetails.project_theme
-    );
-    $(".analysis-tabs .specific-project-genre").html(
-      projectDetails.project_genre
-    );
-    $(".analysis-tabs .specific-project-language").html(
-      projectDetails.project_language
-    );
-    $(".analysis-tabs .specific-project-type").html(
-      projectDetails.project_type
-    );
-    $(".analysis-tabs .specific-project-package").html(projectDetails.package);
-    $(".analysis-tabs .specific-project-total-slots").html(
-      projectDetails.total_slots
-    );
-    $(".analysis-tabs .specific-project-filled-slots").html(
-      projectDetails.filled_slots
-    );
-    var html = "";
-    projectDetails.compiler.map((compiler, index) => {
-      html += `
-        <h5>Compiler ${index + 1}</h5>
-          <table class="table table-striped">
-            <tr>
-              <td>Name</td>
-              <td>${compiler.name}</td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td>${compiler.email}</td>
-            </tr>
-            <tr>
-              <td>Mobile</td>
-              <td>${compiler.mobile}</td>
-            </tr>
-          </table>
-      `;
-    });
-    $(".analysis-tabs .specific-project-compiler-container").html(html);
-    $(".analysis-navItem.active").removeClass("active");
-    $("#specific-project-details")
-      .removeClass("display-none")
-      .addClass("display-block active");
-    $(".analysis-content.active").removeClass("active");
-    $(`#specific-project-details-tab`).addClass("active");
+    viewProject(projectId);
   });
+  var updateCompiler = true;
+  var compilerArray = [];
   $("#project-container").on("click", ".edit-project", function () {
+    $(".analysis-tabs").find(".update-project").remove();
+    updateProjectObj = {};
+    updateCompiler = true;
     const projectId = $(this).attr("id");
     const projectDetails = projects.find((project) => project._id == projectId);
+    compilerArray = projectDetails.compiler;
     console.log(projectDetails);
     $(".analysis-tabs .specific-project-name").html(
-      `<input type="text" value = "${projectDetails.project_name.toUpperCase()}" class=specific-project-name-input>`
+      `<input type="text" name="project_name" value = "${projectDetails.project_name.toUpperCase()}" class=specific-project-name-input>`
     );
     $(".analysis-tabs .specific-project-theme").html(
-      `<input type="text" value = "${projectDetails.project_theme}" class=specific-project-name-input>`
+      `<input type="text" name="project_theme" value = "${projectDetails.project_theme}" class=specific-project-theme-input>`
     );
     $(".analysis-tabs .specific-project-genre").html(
-      `<input type="text" value = "${projectDetails.project_genre}" class=specific-project-name-input>`
+      `<input type="text" name="project_genre" value = "${projectDetails.project_genre}" class=specific-project-genre-input>`
     );
     $(".analysis-tabs .specific-project-language").html(
-      `<input type="text" value = "${projectDetails.project_language}" class=specific-project-name-input>`
+      `<input type="text" name="project_language" value = "${projectDetails.project_language}" class=specific-project-language-input>`
     );
     $(".analysis-tabs .specific-project-type").html(
-      `<input type="text" value = "${projectDetails.project_type}" class=specific-project-name-input>`
+      `<input type="text" name="project_type" value = "${projectDetails.project_type}" class=specific-project-type-input>`
     );
     $(".analysis-tabs .specific-project-package").html(
-      `<input type="text" value = "${projectDetails.package}" class=specific-project-name-input>`
+      `<input type="text" name="package" value = "${projectDetails.package}" class=specific-project-package-input>`
     );
     $(".analysis-tabs .specific-project-total-slots").html(
-      `<input type="text" value = "${projectDetails.total_slots}" class=specific-project-name-input>`
+      `<input type="text" name="total_slots" value = "${projectDetails.total_slots}" class=specific-project-total-slots-input>`
     );
     $(".analysis-tabs .specific-project-filled-slots").html(
-      `<input type="text" value = "${projectDetails.filled_slots}" class=specific-project-name-input>`
+      `<input type="text" name="filled_slots" value = "${projectDetails.filled_slots}" class=specific-project-filled-slots-input>`
     );
     var html = "";
     projectDetails.compiler.map((compiler, index) => {
@@ -187,30 +144,69 @@ jQuery(document).ready(function () {
               <td>Name</td>
               <td><input type="text" value = "${
                 compiler.name
-              }" class=specific-project-name-input></td>
+              }" class=specific-project-compiler-name-input name="compiler-name-${index}" id="${projectId}"></td>
             </tr>
             <tr>
               <td>Email</td>
               <td><input type="text" value = "${
                 compiler.email
-              }" class=specific-project-name-input></td>
+              }" class=specific-project-compiler-email-input name="compiler-email-${index}" id="${projectId}"></td>
             </tr>
             <tr>
               <td>Mobile</td>
               <td><input type="text" value = "${
                 compiler.mobile
-              }" class=specific-project-name-input></td>
+              }" class=specific-project-compiler-mobile-input name="compiler-mobile-${index}" id="${projectId}"></td>
             </tr>
           </table>
       `;
     });
     $(".analysis-tabs .specific-project-compiler-container").html(html);
+
+    html = `<div class="update-project btn btn-success" id="${projectId}">
+              Update
+            </div>`;
+    $(".analysis-tabs #specific-project-details-tab").append(html);
     $(".analysis-navItem.active").removeClass("active");
     $("#specific-project-details")
       .removeClass("display-none")
       .addClass("display-block active");
     $(".analysis-content.active").removeClass("active");
     $(`#specific-project-details-tab`).addClass("active");
+  });
+  $(".analysis-tabs #specific-project-details-tab").on(
+    "keyup paste",
+    "input",
+    function (e) {
+      if (e.target.name.split("-")[0] !== "compiler") {
+        updateProjectObj = {
+          ...updateProjectObj,
+          [e.target.name]: e.target.value,
+        };
+      } else {
+        const index = e.target.name.split("-")[2];
+        let targetCompiler = compilerArray[index];
+        targetCompiler = {
+          ...targetCompiler,
+          [e.target.name.split("-")[1]]: e.target.value,
+        };
+        compilerArray.splice(index, 1, targetCompiler);
+        updateProjectObj = {
+          ...updateProjectObj,
+          compiler: compilerArray,
+        };
+      }
+      console.log(updateProjectObj);
+    }
+  );
+  $(".analysis-tabs").on("click", ".update-project", function () {
+    const projectId = $(this).attr("id");
+    updateProject(projectId, updateProjectObj).then((data) => {
+      const index = projects.findIndex((project) => project._id == projectId);
+      projects.splice(index, 1, data);
+      fetchProjects(projects);
+      viewProject(projectId);
+    });
   });
   $("#project-container").on("click", ".delete-project", function () {
     const id = $(this).attr("id");
@@ -405,6 +401,60 @@ jQuery(document).ready(function () {
     return true;
   };
 
+  const viewProject = (projectId) => {
+    $(".analysis-tabs").find(".update-project").remove();
+    const projectDetails = projects.find((project) => project._id == projectId);
+    console.log(projectDetails);
+    $(".analysis-tabs .specific-project-name").html(
+      projectDetails.project_name.toUpperCase()
+    );
+    $(".analysis-tabs .specific-project-theme").html(
+      projectDetails.project_theme
+    );
+    $(".analysis-tabs .specific-project-genre").html(
+      projectDetails.project_genre
+    );
+    $(".analysis-tabs .specific-project-language").html(
+      projectDetails.project_language
+    );
+    $(".analysis-tabs .specific-project-type").html(
+      projectDetails.project_type
+    );
+    $(".analysis-tabs .specific-project-package").html(projectDetails.package);
+    $(".analysis-tabs .specific-project-total-slots").html(
+      projectDetails.total_slots
+    );
+    $(".analysis-tabs .specific-project-filled-slots").html(
+      projectDetails.filled_slots
+    );
+    var html = "";
+    projectDetails.compiler.map((compiler, index) => {
+      html += `
+        <h5>Compiler ${index + 1}</h5>
+          <table class="table table-striped">
+            <tr>
+              <td>Name</td>
+              <td>${compiler.name}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>${compiler.email}</td>
+            </tr>
+            <tr>
+              <td>Mobile</td>
+              <td>${compiler.mobile}</td>
+            </tr>
+          </table>
+      `;
+    });
+    $(".analysis-tabs .specific-project-compiler-container").html(html);
+    $(".analysis-navItem.active").removeClass("active");
+    $("#specific-project-details")
+      .removeClass("display-none")
+      .addClass("display-block active");
+    $(".analysis-content.active").removeClass("active");
+    $(`#specific-project-details-tab`).addClass("active");
+  };
   //fetch dom elements
 
   const fetchUserInfo = async (tab) => {
@@ -638,6 +688,24 @@ jQuery(document).ready(function () {
       return res.json();
     }
     if (res.status === 401) {
+      document.location = "/";
+    }
+  };
+  const updateProject = async (projectId, project) => {
+    const res = await fetch(`${API_HOST}/project/${projectId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(project),
+      cookies: document.cookie,
+    });
+    if (res.status == 200) {
+      return res.json();
+    }
+    if (res.status == 401) {
       document.location = "/";
     }
   };
