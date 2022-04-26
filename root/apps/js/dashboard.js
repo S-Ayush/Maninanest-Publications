@@ -3,6 +3,20 @@ jQuery(document).ready(function () {
   var projects = [];
   var projectFilters = [];
   var updateProjectObj = {};
+  const packages = [
+    { package: "1000 Elite", total_slots: "15" },
+    { package: "700 Platinum", total_slots: "20" },
+    { package: "500 Diamond", total_slots: "30" },
+    { package: "375 Gold", total_slots: "40" },
+    { package: "250 Sapphire", total_slots: "40" },
+    { package: "200 Coral", total_slots: "45" },
+    { package: "150 Pearl", total_slots: "50" },
+    { package: "90 Classic", total_slots: "75" },
+    { package: "50 Classic Bio", total_slots: "150" },
+    { package: "30 Pocket", total_slots: "200" },
+    { package: "200 E-book", total_slots: "60" },
+    { package: "400 Hard Copy", total_slots: "60" },
+  ];
 
   setTimeout(function () {
     $(".header").addClass("hide");
@@ -316,7 +330,12 @@ jQuery(document).ready(function () {
         var mobile = $(`.compiler${i} #compilermobile${i}`).val();
         newProject.compiler.push({ name, email, mobile });
       }
-      newProject.total_slots = parseInt(newProject.package.slice(0, 3));
+      const selectedPackage = packages.find((package) => {
+        return (
+          package.package.toLowerCase() == newProject.package.toLowerCase()
+        );
+      });
+      newProject.total_slots = selectedPackage.total_slots;
       console.log(newProject);
       var addedProject = await addNewProjectToDatabase(newProject);
       projects.push(addedProject);
@@ -622,7 +641,7 @@ jQuery(document).ready(function () {
   };
   //api calls
 
-  const API_HOST = "http://localhost:3000"; //"https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
+  const API_HOST = "https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
   const getUserData = async (data) => {
     const res = await fetch(`${API_HOST}/userData`, {
       method: "GET",
@@ -634,6 +653,25 @@ jQuery(document).ready(function () {
       cookies: document.cookie,
     });
     if (res.status === 200) {
+      return res.json();
+    }
+    if (res.status === 401) {
+      document.location = "/";
+    }
+  };
+
+  const getTeam = async () => {
+    const res = await fetch(`${API_HOST}/team`, {
+      method: "GET",
+      headers: {
+        Accept: "*/*",
+        "content-Type": "application/json",
+      },
+      credentials: "include",
+      cookies: document.cookie,
+    });
+    if (res.status === 200) {
+      console.log(await res.json());
       return res.json();
     }
     if (res.status === 401) {
@@ -734,5 +772,6 @@ jQuery(document).ready(function () {
     console.log(projects);
     fetchUserInfo("#get-user-info");
     fetchProjects(projects);
+    getTeam();
   }, 1);
 });
