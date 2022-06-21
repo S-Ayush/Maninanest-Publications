@@ -20,6 +20,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="books.css" />
   </head>
 
   <body>
@@ -138,125 +139,41 @@
       </div>
     </div>
 
-    <div class="conatiner-fluid development-page">
-      <h2>Page Under Construction</h2>
-      <h3>Site nearly Ready</h3>
-      <div class="progress">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 75%"
-          aria-valuenow="75"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          75%
-        </div>
-      </div>
-      <div class="notify">
-        <a class="btn">Notify Me</a>
-      </div>
-      <div class="dsocial"></div>
-    </div>
+    <!-- books Login -->
 
-    <div class="container-fluid footer">
-      <div class="row icons-tab">
-        <div class="col-lg-4 col-md-6 col-12">
-          <a><i class="fas fa-phone-alt"></i></a>
-          <p class="d-lg-block d-inline"><br />+919376440437</p>
+    <div>
+      <div id="books-login-modal-background" class="hidden"></div>
+      <div id="books-login-modal" class="hidden">
+        <div id="close-books-login-modal">
+          <i class="far fa-times-circle"></i>
         </div>
-        <div class="col-lg-4 col-12">
-          <a><i class="fas fa-envelope"></i></a>
-          <p class="d-lg-block d-inline">
-            <br />maninanestpublications@yahoo.com
-          </p>
-        </div>
-        <div class="col-lg-4 col-12 add d-f">
-          <a><i class="fas fa-map-marker-alt"></i></a>
-          <p class="d-lg-block d-inline">
-            <br /><span
-              >Maninanest Publications,<br />Avas vikash colony,<br />Fatehpur,up<br />123456</span
-            >
-          </p>
-        </div>
-      </div>
-      <hr />
-      <div class="row links">
-        <div class="col-lg-4 col-12">
-          <h2>Maninanest Publications</h2>
-        </div>
-        <div class="col-lg-4 col-12">
-          <h4>Quick Links</h4>
-          <a href="/">Home</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a href="anthologypackages.html">Packages</a>
-          <a href="books.html">Books</a>
-        </div>
-        <div class="col-lg-4 col-12">
-          <h4>Resources</h4>
-          <a href="blogs.html">Blogs</a>
-          <a>Editor's Page</a>
-          <a>Official News</a>
-        </div>
+        <form class="form-field">
+          <div>
+            <input
+              id="books-login-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div style="margin-bottom: 0">
+            <a class="btn primary" id="books-Login-user">Login</a>
+          </div>
+        </form>
       </div>
     </div>
 
-    <div class="container-fluid end">
-      <p>© 2021,Maninanest Publication Pvt. Ltd.</p>
+    <div class="container-fluid books">
+      <div class="analysis-navbar hidden" id="analysis-navbar">
+        <div class="analysis-navItem active" id="general-overview">Books</div>
+        <div class="analysis-navItem" id="specific-project-details">
+          My Books
+        </div>
+      </div>
+      <div class="books-tab row" id="booksTab"></div>
     </div>
 
-    <!-- <div class="slider">
-        
-      </div> -->
-
-    <!-- <script>
-        (document).ready(function(){
-          ('.slider').slick({
-            infinite:true,
-            dots:true,
-            centerMode: true,
-            centerPadding: 0,
-            variableWidth: false,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay :false,
-            autoplaySpeed:2000,
-            arrows:false,
-            responsive:[
-            {
-                breakpoint: 1600,
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
-                  centerMode:false
-                }
-            },
-            {
-                breakpoint: 1200,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                  centerMode:false
-                }
-            },
-            {
-                breakpoint: 650,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  centerMode:false
-                }
-            },
-            ]
-          });
-          ('.slick-dots li').innerHTML="";
-          ('.counter').counterUp({
-            delay: 10,
-            time: 2000
-          });
-        });
-      </script> -->
     <script
       type="text/javascript"
       src="//code.jquery.com/jquery-1.11.0.min.js"
@@ -266,21 +183,13 @@
       src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
     ></script>
     <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
-    <script
       src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/3.0.0/jquery.waypoints.js"
       integrity="sha512-kAKC+JNXXE28EycATN2UdxoTwR/5B4GpZnGPkzc7Z0QXGnH+BbFuhYDM7/va6ouR0NfGydfVN2alYnyfU/UCgw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"
-      integrity="sha512-+/4Q+xH9jXbMNJzNt2eMrYv/Zs2rzr4Bu2thfvzlshZBvH1g+VGP55W8b6xfku0c0KknE7qlbBPhDPrHFbgK4g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+
     <script type="text/javascript" src="login/index.js"></script>
+    <script type="text/javascript" src="./books.js"></script>
   </body>
 </html>

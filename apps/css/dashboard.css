@@ -300,6 +300,30 @@ input.required {
   width: 100%;
 }
 
+#books-analysis-tab .form-field {
+  margin: 20px 0;
+}
+
+#books-analysis-tab .projectinput {
+  border-radius: 8px;
+  border: 2px solid #0000003b;
+  height: 40px;
+  width: 100%;
+  color: #7c7c7c;
+  font-weight: 500;
+  padding: 2px 8px;
+}
+#books-analysis-tab .projectinput:focus {
+  border: none;
+  box-shadow: 1px 0px 11px 2px #8888885d;
+  outline: none;
+}
+#books-analysis-tab .project-label {
+  color: rgb(107, 107, 107);
+  font-size: 20px;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 1200px) {
   .side-bar {
     width: 8%;

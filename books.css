@@ -1,0 +1,182 @@
+body {
+  background-color: #202124;
+}
+.books {
+  background-color: #202124;
+}
+.books .books-tab {
+  margin-top: 20px;
+}
+.books .books-image img {
+  width: 100%;
+  border-radius: 7px;
+}
+
+.books .books-item {
+  font-size: 1.4vw;
+}
+
+.books .books-title {
+  font-weight: 600;
+  color: white;
+  margin-top: 7px;
+}
+.books .books-author {
+  color: #8d8c8c;
+  font-weight: 400;
+  margin-top: -16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#books-login-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4999;
+  background: rgba(0, 0, 0, 0.5);
+}
+#books-login-modal-background.show {
+  display: block;
+}
+#books-login-modal-background.hidden {
+  display: none;
+}
+#books-login-modal {
+  padding: 40px 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5000;
+  background-color: white;
+  transition: 0.4s all;
+  overflow: hidden;
+  border-radius: 4px;
+}
+#books-login-modal.show {
+  width: 30%;
+  max-height: 350px;
+}
+#books-login-modal.hidden {
+  width: 0%;
+  max-height: 0px;
+  padding: 0;
+}
+#close-books-login-modal {
+  position: absolute;
+  top: -3px;
+  right: 4px;
+  color: red;
+  font-size: 20px;
+  font-weight: 600;
+}
+#books-login-modal div {
+  margin-bottom: 25px;
+}
+#books-login-modal input {
+  width: 100%;
+  height: 49px;
+  border-radius: 7px;
+}
+#books-login-modal .btn {
+  background: rgb(46, 164, 79);
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+  width: 100%;
+}
+
+.analysis-container {
+  margin-top: 25px;
+  padding: 15px;
+}
+.analysis-navbar {
+  margin-top: 20px;
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
+  padding: 10px;
+  box-shadow: inset 0px 0px 8px 1px #5e5e5e;
+  border-radius: 54px;
+}
+.analysis-navbar.hidden {
+  display: none;
+}
+.analysis-navbar::-webkit-scrollbar {
+  display: none;
+}
+.analysis-navItem {
+  font-size: 18px;
+  padding: 5px 15px;
+  border-radius: 29px;
+  background: #eaf0ea;
+  margin: 0px 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.analysis-navItem.active {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+}
+.analysis-navItem.display-block {
+  display: block;
+}
+.analysis-navItem.display-none {
+  display: none;
+}
+.analysis-content {
+  display: none;
+  margin-top: 15px;
+}
+.analysis-content.active {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  #books-login-modal.show {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .books .books-item {
+    font-size: 1.8vw;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  #books-login-modal.show {
+    width: 52%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #books-login-modal.show {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .books .books-item {
+    font-size: 2.5vw;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  #books-login-modal.show {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 560px) {
+  #books-login-modal.show {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 460px) {
+  .books .books-item {
+    font-size: 3.2vw;
+  }
+}

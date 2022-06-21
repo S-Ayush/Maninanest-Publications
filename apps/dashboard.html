@@ -149,53 +149,28 @@
                       <label for="package">Package</label>
                     </div>
                     <div class="col-md-9">
-                      <select
+                      <input
                         id="package"
                         name="package"
                         class="projectinput"
                         placeholder="Package"
                         required
-                      >
-                        <option
-                          disabled
-                          style="
-                            background-color: rgb(184, 184, 184);
-                            color: rgb(0, 0, 0);
-                          "
-                        >
-                          Hard Copy Packages
-                        </option>
-                        <option>1000 Elite</option>
-                        <option>700 Platinum</option>
-                        <option>500 Diamond</option>
-                        <option>375 Gold</option>
-                        <option
-                          disabled
-                          style="
-                            background-color: rgb(184, 184, 184);
-                            color: rgb(0, 0, 0);
-                          "
-                        >
-                          E-Book Packages
-                        </option>
-                        <option>250 Sapphire</option>
-                        <option>200 Coral</option>
-                        <option>150 Pearl</option>
-                        <option>90 Classic</option>
-                        <option>50 Classic Bio</option>
-                        <option>30 Pocket</option>
-                        <option
-                          disabled
-                          style="
-                            background-color: rgb(184, 184, 184);
-                            color: rgb(0, 0, 0);
-                          "
-                        >
-                          Special Packages
-                        </option>
-                        <option>200 E-book</option>
-                        <option>400 Hard Copy</option>
-                      </select>
+                      />
+                    </div>
+                  </div>
+                  <div class="form-field row">
+                    <div class="project-label col-md-3">
+                      <label for="total-slots">Total Slots</label>
+                    </div>
+                    <div class="col-md-9">
+                      <input
+                        id="total-slots"
+                        type="number"
+                        name="total-slots"
+                        class="projectinput"
+                        placeholder="Total Slots"
+                        required
+                      />
                     </div>
                   </div>
                 </div>
@@ -342,6 +317,11 @@
             >
               Project Overview
             </div>
+            <div class="analysis-navItem" id="show-books">Books</div>
+            <div class="analysis-navItem" id="books-analysis">Add Book</div>
+            <div class="analysis-navItem display-none" id="books-Access">
+              Books Access
+            </div>
           </div>
           <!-- analysis-tabs -->
           <div class="analysis-tabs">
@@ -387,6 +367,92 @@
             </div>
             <div class="analysis-content" id="specific-project-overview-tab">
               <h1>Project Overview Tab</h1>
+            </div>
+            <div class="analysis-content" id="books-analysis-tab">
+              <form>
+                <div class="form-field row">
+                  <div class="project-label col-md-3">
+                    <label for="bookTitle">Book Title</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input
+                      id="bookTitle"
+                      name="bookTitle"
+                      class="projectinput"
+                      placeholder="Book Title"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-field row">
+                  <div class="project-label col-md-3">
+                    <label for="bookImage">Book Image</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input
+                      id="bookImage"
+                      name="bookImage"
+                      class="projectinput"
+                      placeholder="Book Image"
+                      required
+                      accept="image/*"
+                      type="file"
+                    />
+                  </div>
+                </div>
+                <div class="form-field row">
+                  <div class="project-label col-md-3">
+                    <label for="bookAuthors">Book Authors</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input
+                      id="bookAuthors"
+                      name="bookAuthors"
+                      class="projectinput"
+                      placeholder="Book Authors"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-field row">
+                  <div class="project-label col-md-3">
+                    <label for="bookLocation">Book Location</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input
+                      id="bookLocation"
+                      name="bookLocation"
+                      class="projectinput"
+                      placeholder="Book Location"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-field row">
+                  <div class="project-label col-md-3">
+                    <label for="bookISBN">Book ISBN</label>
+                  </div>
+                  <div class="col-md-9">
+                    <input
+                      id="bookISBN"
+                      name="bookISBN"
+                      class="projectinput"
+                      placeholder="Book ISBN"
+                      required
+                    />
+                  </div>
+                </div>
+                <div
+                  class="btn btn-success"
+                  id="add-new-book-btn"
+                  style="width: 100%"
+                >
+                  Add Book
+                </div>
+              </form>
+            </div>
+            <div class="analysis-content" id="books-Access-tab">
+              <h2 class="books-access-name" style="text-align: center"></h2>
             </div>
           </div>
         </div>

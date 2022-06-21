@@ -3,20 +3,10 @@ jQuery(document).ready(function () {
   var projects = [];
   var projectFilters = [];
   var updateProjectObj = {};
-  const packages = [
-    { package: "1000 Elite", total_slots: "15" },
-    { package: "700 Platinum", total_slots: "20" },
-    { package: "500 Diamond", total_slots: "30" },
-    { package: "375 Gold", total_slots: "40" },
-    { package: "250 Sapphire", total_slots: "40" },
-    { package: "200 Coral", total_slots: "45" },
-    { package: "150 Pearl", total_slots: "50" },
-    { package: "90 Classic", total_slots: "75" },
-    { package: "50 Classic Bio", total_slots: "150" },
-    { package: "30 Pocket", total_slots: "200" },
-    { package: "200 E-book", total_slots: "60" },
-    { package: "400 Hard Copy", total_slots: "60" },
-  ];
+  var currentBookDetails = {
+    name: "",
+    id: "",
+  };
 
   setTimeout(function () {
     $(".header").addClass("hide");
@@ -238,6 +228,13 @@ jQuery(document).ready(function () {
     $(".analysis-content.active").removeClass("active");
     $(`#${id}-tab`).addClass("active");
   });
+
+  $("#add-new-book-btn").on("click", function () {
+    addNewbook();
+  });
+  $("#show-books").on("click", function () {
+    document.location.href = `/books.html?userid=${userData._id} `;
+  });
   // helpers functions
 
   const getTabs = (tab) => {
@@ -320,6 +317,9 @@ jQuery(document).ready(function () {
       newProject.package = $(".add-new-project-input-collection #package")
         .val()
         .toLowerCase();
+      newProject.total_slots = $(
+        ".add-new-project-input-collection #total-slots"
+      ).val();
 
       var compilerCount = $(
         ".add-new-project-input-collection .compiler-division"
@@ -330,12 +330,6 @@ jQuery(document).ready(function () {
         var mobile = $(`.compiler${i} #compilermobile${i}`).val();
         newProject.compiler.push({ name, email, mobile });
       }
-      const selectedPackage = packages.find((package) => {
-        return (
-          package.package.toLowerCase() == newProject.package.toLowerCase()
-        );
-      });
-      newProject.total_slots = selectedPackage.total_slots;
       console.log(newProject);
       var addedProject = await addNewProjectToDatabase(newProject);
       projects.push(addedProject);
@@ -639,6 +633,66 @@ jQuery(document).ready(function () {
     compilerCount = 0;
     $(".compiler-division").html(fetchNewCompilerSection());
   };
+
+  const addNewbook = () => {
+    debugger;
+    let newBook = {
+      title: "",
+      testImage: "",
+      authors: "",
+      drive_url: "",
+      isbn: "",
+    };
+    newBook.title = $("#bookTitle").val();
+    newBook.testImage = $("#bookImage").prop("files");
+    newBook.authors = $("#bookAuthors").val();
+    newBook.drive_url = $("#bookLocation").val();
+    newBook.isbn = $("#bookISBN").val();
+    var form_data = new FormData();
+
+    for (var key in newBook) {
+      if (key !== "testImage") {
+        form_data.append(key, newBook[key]);
+      } else {
+        form_data.append(key, newBook[key][0]);
+      }
+    }
+    // var data = new FormData();
+    // data.append("testImage", newBook.testImage);
+    // data.append("title", newBook.title);
+    // data.append("authors", newBook.authors);
+    // data.append("drive_url", newBook.drive_url);
+    // data.append("isbn", newBook.isbn);
+    addBook(form_data);
+  };
+
+  const getBooksfromUrl = () => {
+    let queryString = document.location.search;
+    if (queryString) {
+      var query = {};
+      var pairs = (
+        queryString[0] === "?" ? queryString.substr(1) : queryString
+      ).split("&");
+      for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split("=");
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || "");
+      }
+      if (query.book_id) {
+        currentBookDetails = { name: query.book_name, id: query.book_id };
+        $(".analysis-navItem.active").removeClass("active");
+        $("#books-Access")
+          .removeClass("display-none")
+          .addClass("display-block active");
+        $(".analysis-content.active").removeClass("active");
+        $("#books-Access-tab").addClass("active");
+        $("#books-Access-tab .books-access-name").html(query.book_name);
+        $("#books-Access")[0].scrollIntoView({
+          behavior: "smooth", // or "auto" or "instant"
+          inline: "start",
+        });
+      }
+    }
+  };
   //api calls
 
   const API_HOST = "https://mnp-backend.herokuapp.com"; //"http://localhost:3000";
@@ -765,6 +819,25 @@ jQuery(document).ready(function () {
       document.location = "/";
     }
   };
+  const addBook = async (book) => {
+    debugger;
+    const res = await fetch(`${API_HOST}/book`, {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+      },
+      credentials: "include",
+      body: book,
+      cookies: document.cookie,
+    });
+    if (res.status == 200) {
+      document.location.href = `/books.html?userid=${userData._id} `;
+    } else if (res.status == 401) {
+      document.location = "/";
+    } else {
+      alert("something went wrong!");
+    }
+  };
   setTimeout(async function () {
     let data = await getUserData();
     userData = await data.user;
@@ -772,6 +845,7 @@ jQuery(document).ready(function () {
     console.log(projects);
     fetchUserInfo("#get-user-info");
     fetchProjects(projects);
-    getTeam();
+    getBooksfromUrl();
+    // getTeam();
   }, 1);
 });

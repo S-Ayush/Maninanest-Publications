@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>INDCreators</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="add-new-project-input-collection" id="add-new-project-tab">
+      <div class="submmited d-none"><h2>Thanks for Submmiting!</h2></div>
+      <div class="project-form">
+        <form>
+          <div class="projectdivision">
+            <h4>Project Details</h4>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="projectname">Project Name </label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="projectname"
+                  name="projectname"
+                  class="projectinput"
+                  placeholder="Project Name"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="projecttheme">Project Theme </label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="projecttheme"
+                  name="projecttheme"
+                  class="projectinput"
+                  placeholder="Project Theme"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="projectgenre">Project Genre</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="projectgenre"
+                  name="projectgenre"
+                  class="projectinput"
+                  placeholder="Project Genre"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="projectlanguage">Project language</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="projectlanguage"
+                  name="projectlanguage"
+                  class="projectinput"
+                  placeholder="Project language"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="projecttype">Project Type</label>
+              </div>
+              <div class="col-md-9">
+                <select
+                  id="projecttype"
+                  name="projecttype"
+                  class="projectinput"
+                  placeholder="Project Type"
+                  required
+                >
+                  <option>Anthology</option>
+                  <option>Solo Book</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="package">Package</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="package"
+                  name="package"
+                  class="projectinput"
+                  placeholder="Package"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field row">
+              <div class="project-label col-md-3">
+                <label for="total-slots">Total Slots</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  id="total-slots"
+                  type="number"
+                  name="total-slots"
+                  class="projectinput"
+                  placeholder="Total Slots"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <h4>Compiler Details</h4>
+          <div class="compiler-division" style="padding: 15px">
+            <div
+              class="compiler1"
+              style="
+                zoom: 0.8;
+                box-shadow: 2px 2px 8px 2px grey;
+                padding: 10px;
+                margin-bottom: 10px;
+              "
+            >
+              <h5>compiler 1</h5>
+              <div class="form-field row">
+                <div class="project-label col-md-3">
+                  <label for="Compilername1">Compiler Name</label>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    id="Compilername1"
+                    name="Compilername1"
+                    class="projectinput"
+                    placeholder="Compiler Name"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-field row">
+                <div class="project-label col-md-3">
+                  <label for="compileremail1">Compiler Email</label>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    id="compileremail1"
+                    name="compileremail1"
+                    class="projectinput"
+                    placeholder="Compiler Email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-field row">
+                <div class="project-label col-md-3">
+                  <label for="compilermobile1">Compiler Mobile</label>
+                </div>
+                <div class="col-md-9">
+                  <input
+                    id="compilermobile1"
+                    name="compilermobile1"
+                    class="projectinput"
+                    placeholder="Compiler Mobile"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="btn btn-primary ml-3 mb-4 add-new-compiler-button"
+            style="zoom: 0.8; margin-top: -5px"
+          >
+            Add New Compiler
+          </div>
+          <div
+            class="btn btn-success"
+            id="add-new-project-btn"
+            style="width: 100%"
+          >
+            Add Project
+          </div>
+        </form>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/3.0.0/jquery.waypoints.js"
+      integrity="sha512-kAKC+JNXXE28EycATN2UdxoTwR/5B4GpZnGPkzc7Z0QXGnH+BbFuhYDM7/va6ouR0NfGydfVN2alYnyfU/UCgw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>

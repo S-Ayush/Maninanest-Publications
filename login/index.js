@@ -6,10 +6,10 @@ jQuery(document).ready(function () {
   $("#login-modal-open-button").on("click", async function () {
     $("#login-modal-background").addClass("show").removeClass("hidden");
     $("#login-modal").addClass("show").removeClass("hidden");
-    const res = await confirmAuth();
-    if (res.status !== 401) {
-      document.location = "/apps/dashboard.html";
-    }
+    // const res = await confirmAuth();
+    // if (res.status !== 401) {
+    //   document.location = "/apps/dashboard.html";
+    // }
   });
   $("#close-login-modal").on("click", function () {
     $("#login-modal-background").addClass("hidden").removeClass("show");
